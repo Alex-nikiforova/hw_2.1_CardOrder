@@ -59,6 +59,17 @@ public class CardOrderNegativeTest {
     }
 
     @Test
+    public void shouldReturnErrorMessageIfTelWithLetters() {
+
+        $(".form_theme_alfa-on-white");
+        $("[data-test-id=name] input").setValue("Владислав Курбатов");
+        $("[data-test-id=phone] input").setValue("abc");
+        $("[data-test-id=agreement]").click();
+        $("[type=button]").click();
+        $(".input_type_tel .input__sub").shouldHave(exactText("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678."));
+    }
+
+    @Test
     public void shouldReturnErrorMessageIfCheckBoxIsEmpty() {
 
         $(".form_theme_alfa-on-white");
